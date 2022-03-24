@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StyleSheet, BackHandler, View,  Text,  } from 'react-native';
-
-import { Permissions, Contacts } from 'expo';
+// import { Platform } from 'react-native';
+import * as LocationPicker from 'expo-location'
 
 function Home({route, navigation}) {
     /*  Get the param */
   const { username } = route.params;
+
+  const [location,setLocation] = useState('')
 
 
   function handleBackButtonClick() {
@@ -14,6 +16,28 @@ function Home({route, navigation}) {
   }
 
   useEffect(() => {
+    (async() => {
+     
+        const {status} = await LocationPicker.requestForegroundPermissionsAsync();
+
+        let loc = await LocationPicker.getCurrentPositionAsync({});
+        setLocation(loc);
+
+        console.log(loc);
+
+        if(status!== 'granted')
+        {
+          alert('Sorry, Request not granted')
+        }
+    })();
+    
+  }, []);
+
+  useEffect(() => {
+
+    // Permission.checkPermission(PERMISSION_TYPE.location)
+
+
     BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
     return () => {
       BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
@@ -29,6 +53,10 @@ function Home({route, navigation}) {
         <Text>
             Welcome {username}
         </Text>
+
+        {/* <Text>
+            {location}
+        </Text> */}
     </View>
   )
 }
