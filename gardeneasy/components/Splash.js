@@ -1,58 +1,158 @@
-import React from 'react'
-import { StyleSheet,  View, Text, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
-import plantsplash from '../assets/plantsplash.jpg'
+import React from 'react';
+import { StyleSheet,  View, Text, Image,  ScrollView, TouchableOpacity } from 'react-native';
+import AppIntroSlider from 'react-native-app-intro-slider';
+import Login from './Login';
 
-function Splash({navigation}) {
+const slides = [
+  {
+    key: 'one',
+    title: 'Welcome',
+    text: 'Welcome to Gardena!',
+    image: require('../assets/1.jpg'),
+    // backgroundColor: '#59b2ab',
+  },
+  {
+    key: 'two',
+    title: '',
+    text: 'Other cool stuff',
+    image: require('../assets/2.jpg'),
+    // backgroundColor: '#febe29',
+  },
+  {
+    key: 'three',
+    title: '',
+    text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
+    image: require('../assets/3.jpg'),
+    // backgroundColor: '#22bcb5',
+  }
+];
 
+export default class Splash extends React.Component {
 
-  return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
-    <View style={styles.container}>
+  constructor(props){  
+    super(props);  
+    this.state = {
+      showRealApp: false
+    }  
+    // this.handleEvent = this.handleEvent.bind(this);  
+  } 
 
-      <Image source={plantsplash} style={{ height: 300 }}
-      resizeMode="contain"/>
+  
+  _renderItem = ({ item }) => {
 
+    let buttonsview
 
+    if(item.key==='one')
+    {
+      buttonsview = 
       <View style={styles.form}>
         
-        <View style={styles.touchopcontainer}>
-          <TouchableOpacity  onPress={() => navigation.navigate('Login', {
-            username: '',
-            password: '',
-            stack: ''
-          })}>
-            <Text style={styles.touchableopText}>Already a member? Just Login</Text>
-          </TouchableOpacity>
-        </View>
+      <View style={styles.touchopcontainer}>
+        <TouchableOpacity  onPress={() => this.props.navigation.navigate('Login', {
+          username: '',
+          password: '',
+          stack: ''
+        })}>
+          <Text style={styles.touchableopText}>Already a member? Just Login</Text>
+        </TouchableOpacity>
+      </View>
 
 
-        <View style={styles.touchopcontainer2}>
-          <TouchableOpacity  onPress={() => navigation.navigate('Signup',
+      <View style={styles.touchopcontainer2}>
+        <Text>
+          <Text>New User? </Text>
+          <Text style={{fontWeight: "bold"}}  onPress={() => this.props.navigation.navigate('Signup',
           {
             stack: ''
           })}>
-            <Text style={styles.signuptext}>New User? Sign Up</Text>
-          </TouchableOpacity>
-        </View>
-          
+            Sign Up
+          </Text>
+        </Text>
+      </View>
+        
 
+    </View>
+    }
+    else if(item.key==='three')
+    {
+      buttonsview = 
+      <View style={styles.form}>
+        
+      <View style={styles.touchopcontainer}>
+        <TouchableOpacity  onPress={() => this.props.navigation.navigate('Login', {
+          username: '',
+          password: '',
+          stack: ''
+        })}>
+          <Text style={styles.touchableopText}>Let's Go!</Text>
+        </TouchableOpacity>
       </View>
 
     </View>
+    }
+    else
+    {
+      buttonsview = <View></View>
+    }
+    return (
+      <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
+    <View style={styles.container}>
+
+
+      <Image source={item.image}     style={styles.imagescale} />
+    
+      <Text style={styles.title}>{item.title}</Text>
+
+
+      <Text>{item.text}</Text>
+
+     {buttonsview}
+
+    </View>
     </ScrollView>
-  )
+    );
+  }
+  
+
+
+  render() {
+    if (this.state.showRealApp) {
+      this.props.navigation.navigate('Login', {
+        username: '',
+        password: '',
+        stack: ''
+      })
+    } else {
+      return <AppIntroSlider renderItem={this._renderItem} data={slides} onDone={() => this.props.navigation.navigate('Login', {
+        username: '',
+        password: '',
+        stack: ''
+      })} onSkip={() => this.props.navigation.navigate('Login', {
+        username: '',
+        password: '',
+        stack: ''
+      })} showSkipButton='true'/>;
+    }
+  }
 }
-
-export default Splash
-
 
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#bfcca4',
     alignItems: 'center',
-    justifyContent: 'center',
+  },
+
+  title:
+  {
+    fontSize: 32,
+    // fontFamily: 'Roboto'
+  },
+  
+  imagescale: {
+    width: '100%',
+    height: '60%',
   },
 
   form:
@@ -72,9 +172,9 @@ const styles = StyleSheet.create({
 
   touchopcontainer:
   {
-      backgroundColor: '#66d466',
-      marginTop:40,
-      borderRadius:5, 
+      backgroundColor: '#2f3134',
+      marginTop:20,
+      borderRadius:30, 
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center', 
@@ -83,19 +183,18 @@ const styles = StyleSheet.create({
 
   touchopcontainer2:
   {
-      backgroundColor: '#fff',
-      marginTop:40,
+      
+      marginTop:20,
       borderRadius:5, 
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center', 
-      padding: 10
   },
 
  
   touchableopText:
   {
-    color: '#fff',
+    color: '#bfcca4',
     fontSize: 16
   },
 
