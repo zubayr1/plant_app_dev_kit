@@ -50,25 +50,33 @@ const handleSignup =() =>
     <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
     <View style={styles.container}>
 
-      <Text>Signup</Text>
+    <Text style={styles.title}>Hello</Text>
+
+    <Text  style={styles.desc}> Create your new account</Text>
 
       <View style={styles.form}>
         <TextInput style={styles.inputstyle} onChangeText={(e)=> setName(e)} placeholder='Full Name'/>
-        <TextInput style={styles.inputstyle} onChangeText={(e)=> setUsername(e)} placeholder='Username'/>
+        <TextInput style={styles.inputstyle} onChangeText={(e)=> setUsername(e)} placeholder='Email Id'/>
         <TextInput secureTextEntry={true} style={styles.inputstyle} onChangeText={(e)=> setPassword(e)} placeholder='Password'/>
         <TextInput secureTextEntry={true} style={styles.inputstyle} onChangeText={(e)=> setconfPassword(e)} placeholder='Confirm Password'/>
 
         <View style={styles.touchopcontainer}>
           <TouchableOpacity color='#fff' onPress={() => handleSignup()}>
-            <Text style={styles.touchableopText}>Signup</Text>
+            <Text style={styles.touchableopText1}>Signup</Text>
           </TouchableOpacity>
         </View>
 
 
         <View style={styles.touchopcontainer2}>
-          <TouchableOpacity  color='#fff' onPress={() => handlelogin()}>
-            <Text style={styles.touchableopText}>Already a User? Login</Text>
-          </TouchableOpacity>
+        <Text>
+                  <Text style={styles.touchableopText3} >Already have an account? </Text>
+                  <Text style={styles.touchableopText2}  onPress={() => navigation.navigate('Login',
+                  {
+                    stack: ''
+                  })}>
+                    Login
+                  </Text>
+            </Text>
         </View>
 
       </View>
@@ -93,23 +101,24 @@ const styles = StyleSheet.create({
     form:
     {
       width:'80%',
+      marginTop: 30
     },
     inputstyle:
     {
       backgroundColor:'white',
-      borderRadius:8,
-      borderColor:'#1d9110',
-      borderWidth:1,
-      height:40,
-      paddingStart: 5,
-      marginBottom:5,
+      borderRadius:24,
+      borderColor:'#87c486',
+      borderWidth:2,
+      height:45,
+      paddingStart: 20,
+      marginBottom:10,
     },
   
     touchopcontainer:
     {
-      backgroundColor: '#1826c4',
-      marginTop:40,
-      borderRadius:5, 
+      backgroundColor: '#fff',
+      marginTop:30,
+      borderRadius:30, 
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center', 
@@ -120,21 +129,46 @@ const styles = StyleSheet.create({
   
     touchopcontainer2:
     {
-      backgroundColor: '#66d466',
-      marginTop:40,
-      borderRadius:5, 
+      backgroundColor: '#fff',
+      marginTop:2,
+      borderRadius:5,   
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center', 
-      padding: 10     
+      padding: 10    
   
     },
+    touchableopText3:
+  {
+    color: '#2c4a11',
+    fontSize: 20
+  },
 
-    touchableopText:
+    touchableopText1:
     {
-      color: '#fff',
-      fontSize: 16
-    }
+     
+    color: '#2c4a11',
+    fontSize: 40
+    },
+
+    touchableopText2:
+    {
+      color: '#2c4a11',
+      fontSize: 20,
+      fontWeight: 'bold'
+    },
+    
+  title:
+  {
+    fontSize: 42,
+    color: '#2c4a11'
+  },
+
+  desc:
+  {
+    fontSize: 24,
+    color: '#87c486'
+  },
     
   });
   

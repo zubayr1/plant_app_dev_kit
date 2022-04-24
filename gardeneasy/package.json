@@ -11,10 +11,12 @@
   "dependencies": {
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
+    "@react-navigation/stack": "^6.2.1",
     "expo": "~44.0.0",
     "expo-location": "~14.0.1",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
+    "expo-updates": "~0.11.6",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
@@ -26,7 +28,8 @@
     "undefined": "react-navigation/core"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "metro-react-native-babel-preset": "^0.70.2"
   },
   "private": true
 }

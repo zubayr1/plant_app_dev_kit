@@ -1,4 +1,4 @@
-package MY.APP.NEW_ID;
+package com.trussea.gardena;
 
 import android.os.Build;
 import android.os.Bundle;

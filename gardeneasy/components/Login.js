@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { StyleSheet,  View, Text,  TextInput, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet,  View, Text,  TextInput, ScrollView, TouchableOpacity,  } from 'react-native';
 
 function Login({route, navigation}) {
 
@@ -41,15 +41,19 @@ function Login({route, navigation}) {
     <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
     <View style={styles.container}>
 
-      <Text>Login</Text>
+    <Text style={styles.title}>Welcome</Text>
+
+    <Text  style={styles.desc}> Please log in to your account</Text>
 
       <View style={styles.form}>
-        <TextInput style={styles.inputstyle} defaultValue={username} onChangeText={(e)=> setUsername(e)} placeholder='Username'/>
-        <TextInput secureTextEntry={true} style={styles.inputstyle} defaultValue={password} onChangeText={(e)=> setPassword(e)} placeholder='Password'/>
+        
+        <TextInput selectionColor='green' style={styles.inputstyle} defaultValue={username} onChangeText={(e)=> setUsername(e)} placeholder='Email'/>
+
+        <TextInput selectionColor='green' secureTextEntry={true} style={styles.inputstyle} defaultValue={password} onChangeText={(e)=> setPassword(e)} placeholder='Password'/>
 
         <View style={styles.touchopcontainer}>
           <TouchableOpacity  onPress={() => handlelogin()}>
-            <Text style={styles.touchableopText}>Login</Text>
+            <Text style={styles.touchableopText1}>Log in</Text>
           </TouchableOpacity>
         </View>
 
@@ -57,11 +61,30 @@ function Login({route, navigation}) {
         <View style={styles.touchopcontainer2}>
           
           <TouchableOpacity  onPress={() => handlesignup()}>
-            <Text style={styles.touchableopText}>New User? Sign Up</Text>
+            <Text>
+                  <Text style={styles.touchableopText3} >Dont have an account? </Text>
+                  <Text style={styles.touchableopText2}  onPress={() => navigation.navigate('Signup',
+                  {
+                    stack: ''
+                  })}>
+                    Sign Up
+                  </Text>
+            </Text>
           </TouchableOpacity>
           
         </View>
 
+        <View
+            style={{
+              borderBottomColor: '#bdcca4',
+              borderBottomWidth: 1,
+            }}
+          />
+      </View>
+
+
+      <View style={styles.logindiff}>
+        <Text style={styles.touchableopText3}>Or Login With</Text>
       </View>
 
     </View>
@@ -83,24 +106,25 @@ const styles = StyleSheet.create({
 
   form:
   {
+    marginTop: 40,
     width:'80%',
   },
   inputstyle:
   {
     backgroundColor:'white',
-    borderRadius:8,
-    borderColor:'#1d9110',
-    borderWidth:1,
-    height:40,
-    paddingStart: 5,
-    marginBottom:5,
+    borderRadius:24,
+    borderColor:'#87c486',
+    borderWidth:2,
+    height:45,
+    paddingStart: 20,
+    marginBottom:10,
   },
 
   touchopcontainer:
   {
-      backgroundColor: '#66d466',
-      marginTop:40,
-      borderRadius:5, 
+      backgroundColor: '#fff',
+      marginTop:30,
+      borderRadius:30, 
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center', 
@@ -109,8 +133,8 @@ const styles = StyleSheet.create({
 
   touchopcontainer2:
   {
-      backgroundColor: '#1826c4',
-      marginTop:70,
+      backgroundColor: '#fff',
+      marginTop:2,
       borderRadius:5,   
       flex: 1,
       alignItems: 'center',
@@ -119,10 +143,42 @@ const styles = StyleSheet.create({
 
   },
 
-  touchableopText:
+  logindiff:
   {
-    color: '#fff',
-    fontSize: 16
-  }
+    backgroundColor: '#fff',
+    marginTop:10,
+    borderRadius:5,   
+   
+  },
+
+  touchableopText1:
+  {
+    color: '#2c4a11',
+    fontSize: 40
+  },
+  touchableopText2:
+  {
+    color: '#2c4a11',
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+
+  touchableopText3:
+  {
+    color: '#2c4a11',
+    fontSize: 20
+  },
+
+  title:
+  {
+    fontSize: 42,
+    color: '#2c4a11'
+  },
+
+  desc:
+  {
+    fontSize: 24,
+    color: '#87c486'
+  },
   
 });

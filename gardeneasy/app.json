@@ -4,7 +4,7 @@
     "slug": "gardeneasy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/1.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -21,10 +21,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/1.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "MY.APP.NEW_ID"
+      "package": "com.trussea.gardena"
     },
     "web": {
       "favicon": "./assets/favicon.png"
