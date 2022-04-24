@@ -117,8 +117,10 @@ export default class Splash extends React.Component {
     
       <Text style={styles.title}>{item.title}</Text>
 
+      <View style={styles.textcontainer}>
+      <Text style={styles.desc}>{item.text}</Text>
 
-      <Text>{item.text}</Text>
+      </View>
 
      {buttonsview}
 
@@ -217,5 +219,15 @@ const styles = StyleSheet.create({
     color: '#1b33bf',
     fontSize: 16
   }
-  
+  ,
+  textcontainer:
+  {
+    marginLeft:10,
+    marginRight:10
+  },
+  desc:
+  {
+    fontSize: 16,
+    color: '#000'
+  }
 });
