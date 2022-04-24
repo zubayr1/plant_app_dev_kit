@@ -7,21 +7,35 @@ const slides = [
   {
     key: 'one',
     title: 'Welcome',
-    text: 'Welcome to Gardena!',
+    text: 'Curated information on commonly home grown plants, with blogs, videos and multilingual support.',
     image: require('../assets/1.jpg'),
     // backgroundColor: '#59b2ab',
   },
   {
     key: 'two',
     title: '',
-    text: 'Other cool stuff',
+    text: 'Catered notifications on plant care like daily watering, sunlight needs and fertilisation.',
     image: require('../assets/2.jpg'),
     // backgroundColor: '#febe29',
   },
   {
     key: 'three',
     title: '',
-    text: 'I\'m already out of descriptions\n\nLorem ipsum bla bla bla',
+    text: 'Chat with expert botanists around the world to grow your plant better!',
+    image: require('../assets/3.jpg'),
+    // backgroundColor: '#22bcb5',
+  },
+  {
+    key: 'four',
+    title: '',
+    text: 'Plant identification through pictures. So, no more wasting hours to find your plant!',
+    image: require('../assets/3.jpg'),
+    // backgroundColor: '#22bcb5',
+  },
+  {
+    key: 'five',
+    title: '',
+    text: 'Community support through FAQs, latest news and trends and social media engagement.',
     image: require('../assets/3.jpg'),
     // backgroundColor: '#22bcb5',
   }
@@ -73,7 +87,7 @@ export default class Splash extends React.Component {
 
     </View>
     }
-    else if(item.key==='three')
+    else if(item.key==='five')
     {
       buttonsview = 
       <View style={styles.form}>
