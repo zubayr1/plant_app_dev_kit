@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "gardeneasy",
+    "slug": "gardeneasy",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/1.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/1.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.trussea.gardena"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
