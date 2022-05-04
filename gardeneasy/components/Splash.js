@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet,  View, Text, Image,  ScrollView, TouchableOpacity } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import Login from './Login';
 
 const slides = [
   {
